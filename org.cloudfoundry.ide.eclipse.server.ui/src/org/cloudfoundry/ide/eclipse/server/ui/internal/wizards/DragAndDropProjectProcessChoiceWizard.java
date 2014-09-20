@@ -33,18 +33,18 @@ import org.eclipse.wst.server.core.IModule;
  * project to the application viewer.
  *
  */
-public class DragAndDrogProjectProcessChoiceWizard extends Wizard {
+public class DragAndDropProjectProcessChoiceWizard extends Wizard {
 
 	private final CloudFoundryServer cloudServer;
 	private ProjectProcessChoicePage projProChoicePage;
 	private boolean choosePublish = false;
 	
 	/**
-	 * Constructs an instance of <code>DragAndDrogProjectProcessChoiceWizard</code>.
+	 * Constructs an instance of <code>DragAndDropProjectProcessChoiceWizard</code>.
 	 * 
 	 * @param cloudServer the cloud foundry server instance.
 	 */
-	public DragAndDrogProjectProcessChoiceWizard(CloudFoundryServer cloudServer) {
+	public DragAndDropProjectProcessChoiceWizard(CloudFoundryServer cloudServer) {
 		this.cloudServer = cloudServer;
 		setWindowTitle(cloudServer.getServer().getName());
 		setNeedsProgressMonitor(true);

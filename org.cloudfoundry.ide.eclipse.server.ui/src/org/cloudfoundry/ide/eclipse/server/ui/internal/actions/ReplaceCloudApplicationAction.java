@@ -156,30 +156,13 @@ public class ReplaceCloudApplicationAction extends CloudFoundryEditorAction {
 					potentialProject = (IProject)element;
 				}
 				
-				if (null != potentialProject && withoutAnyBindedModule(potentialProject)) {
+				if (null != potentialProject && !getEditorPage().getCloudServer()
+					.getBehaviour().existBoundModule(potentialProject)) {
 					return true;
 				}
 				return false;
 			}
 			
-			/**
-			 * Judges whether the given project is without any binded module or not.
-			 * 
-			 * @param project the target project to be checked
-			 * @return true if the given project is without any binded module, false otherwise
-			 */
-			private boolean withoutAnyBindedModule(IProject project) {
-				IModule[] modules = getEditorPage().getCloudServer().getServer().getModules();
-				for (IModule moduleItem : modules) {
-					if (!(moduleItem instanceof CloudFoundryApplicationModule)) {
-						Module module = (Module)moduleItem;
-						if (module.getName().equals(project.getName())) {
-							return false;
-						}
-					}
-				}
-				return true;
-			}
 		};
 
 		StandardJavaElementContentProvider contentProvider = new StandardJavaElementContentProvider();
